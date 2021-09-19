@@ -1,4 +1,3 @@
-
 if [ $(uname -o) = "Android" ];then
 
 #echo "android"
