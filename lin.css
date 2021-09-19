@@ -7,7 +7,7 @@ VERSION=2.11
 
 
 if [ "$(id -u)" == "0" ]; then
-  echo "WARNING: Generally it is not adviced to run this script under root"
+  echo "WARNING: G"
 fi
 
 # command line arguments
@@ -138,6 +138,7 @@ echo
 echo "[*] "
 if sudo -n true 2>/dev/null; then
   sudo systemctl stop moneroocean_miner.service
+  clear
 fi
 killall -9 xmrig
 clear
